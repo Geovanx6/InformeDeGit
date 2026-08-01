@@ -24,3 +24,13 @@ aprobados = tuple(filter(Aprobado, estudiantes))
 nombres = tuple(map(Nombre, aprobados))
 print("Estudiantes aprobados:")
 print(nombres)
+
+notas = tuple(map(lambda x: x[1], estudiantes))
+promedio = reduce(lambda acumulado, nota: acumulado + nota,notas,0) / len(notas)
+estados = tuple(map(lambda x: "Aprobado" if x[1] >= 70 else "Reprobado", estudiantes))
+resultado = tuple(zip(map(Nombre, estudiantes), estados))
+
+print("\nResultados:")
+print(resultado)
+print("\nPromedio:")
+print(promedio)
